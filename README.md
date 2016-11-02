@@ -18,7 +18,7 @@ Dockerfiles to ease installation of various Moodle configurations.
 
 ## Running
 
-Start a database (MYSQL/POSTGRES) and link it to any of the PHP Moodle containers.
+Start a database (MySQL/PostgreSQL) and link it to any of the PHP Moodle containers.
 For Oracle use the provided Oracle container with the PHP5.4 + Oracle Client.
 
 Examples below:
@@ -65,3 +65,5 @@ docker exec a-oracle ./setMoodle.sh
 SSH into any of the machines using `docker exec -it <container> /bin/bash`
 
 Change the Oracle DB password using `docker exec a-oracle ./setPassword.sh password`.
+
+Read more information about the DB's on the [MySQL](https://hub.docker.com/_/mysql/), [PostgreSQL](https://hub.docker.com/_/postgres/), [Oracle](https://github.com/oracle/docker-images/tree/master/OracleDatabase).
