@@ -4,14 +4,16 @@ Dockerfiles to ease installation of various Moodle configurations.
 
 ## Building
 
+Build any of the available containers from the root folder with the following commands:
+
 ###PHP5.4 + Moodle
-`docker build -t bencroskery/moodle:php54 -f DockerFile54 .`
+`docker build -t bencroskery/moodle:php54 php54`
 
 ###PHP7 + Moodle
-`docker build -t bencroskery/moodle:php7 -f DockerFile7 .`
+`docker build -t bencroskery/moodle:php7 php7`
 
 ###PHP5.4 + Oracle Client + Moodle
-`docker build -t bencroskery/moodle:php54o -f DockerFile54Oracle .`
+`docker build -t bencroskery/moodle:php54o php54o`
 
 ###Oracle + Moodle
 `docker build -t bencroskery/moodle:oracle oracle`
