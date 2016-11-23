@@ -27,6 +27,8 @@ For Oracle use the provided Oracle container with the PHP5.4 + Oracle Client.
 * to pull the latest Moodle from git add `-e INSTALL=true`
 * run `docker exec my-moodle pullMoodle.sh` once the server has started to wipe the docroot and pull the latest Moodle
 * consider linking the docroot to a local folder using `-v \local\folder:\var\www\html`
+* change the Oracle DB password using `docker exec a-oracle ./setPassword.sh password`
+* SSH into any of the machines using `docker exec -it my-moodle /bin/bash`
 
 Examples below:
 
@@ -71,10 +73,6 @@ docker exec a-oracle ./setMoodle.sh
 #   port: 1521
 ```
 
-## Extras
-
-SSH into any of the machines using `docker exec -it <container> /bin/bash`
-
-Change the Oracle DB password using `docker exec a-oracle ./setPassword.sh password`.
+## More Docs
 
 Read more information about the DB's on the [MySQL](https://hub.docker.com/_/mysql/), [PostgreSQL](https://hub.docker.com/_/postgres/), [Oracle](https://github.com/oracle/docker-images/tree/master/OracleDatabase).
