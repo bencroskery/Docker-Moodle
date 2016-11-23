@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [$INSTALL]; then
+if [ "$INSTALL" ]; then
     sh pullMoodle.sh
 fi
 

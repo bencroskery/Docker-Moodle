@@ -93,6 +93,9 @@ function createDB {
       ALTER USER SYSTEM IDENTIFIED BY 'password';
 EOF"
 
+  sh ./setMoodle.sh
+  sh ./setPassword.sh password
+
   # Move database operational files to oradata
   moveFiles;
 }
