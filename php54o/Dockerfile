@@ -43,20 +43,14 @@ RUN rm -R /tmp/oracle-instantclient-*
 RUN pecl install oci8-2.0.10
 RUN echo 'extension=oci8.so' >> /etc/php.ini
 
-# Add Moodle and Socialwiki plugin.
-RUN cd /var/www/html && \
-    git clone -b MOODLE_31_STABLE git://git.moodle.org/moodle.git . --depth=1 && \
-	cd mod && \
-	git clone https://github.com/bencroskery/moodle-mod_socialwiki.git socialwiki
-ADD ./pull.php /var/www/html/pull.php
-RUN cd /var/www && \
-	mkdir moodledata && \
-	chmod -R 777 . && \
-	chown -R apache:apache .
+# Environment options.
+ENV INSTALL **Boolean**
+
+# Add scripts.
+COPY pullMoodle.sh runServer.sh /usr/local/bin/
 
 VOLUME /var/www/html
-VOLUME /var/www/moodledata
 
 EXPOSE 80
 
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+CMD ["runServer.sh"]

@@ -12,4 +12,4 @@ mkdir moodledata
 
 # Open up everything
 chmod -R 777 .
-chown -R apache:apache .
+chown -R www-data:www-data .

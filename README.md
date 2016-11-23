@@ -23,11 +23,17 @@ Build any of the available containers from the root folder with the following co
 Start a database (MySQL/PostgreSQL) and link it to any of the PHP Moodle containers.
 For Oracle use the provided Oracle container with the PHP5.4 + Oracle Client.
 
+* make sure to connect port 80 to a local port with `-p 8080:80`
+* to pull the latest Moodle from git add `-e INSTALL=true`
+* run `docker exec my-moodle pullMoodle.sh` once the server has started to wipe the docroot and pull the latest Moodle
+* consider linking the docroot to a local folder using `-v \local\folder:\var\www\html`
+
 Examples below:
 
+###PHP7 + MySQL with Moodle Install
 ```
 docker run -d --name a-mysql -e MYSQL_ROOT_PASSWORD=password -d mysql
-docker run -d --link a-mysql:mysql -p 80:80 --name my-moodle bencroskery/moodle:php7
+docker run -d --link a-mysql:mysql -p 8080:80 -e INSTALL=true --name my-moodle bencroskery/moodle:php7
 
 # Moodle config
 # -------------
@@ -36,9 +42,11 @@ docker run -d --link a-mysql:mysql -p 80:80 --name my-moodle bencroskery/moodle:
 #   user: root
 #   password: password
 ```
+
+###PHP5.4 + PostgreSQL with Volume Mount
 ```
 docker run -d --name a-postgres -e POSTGRESS_PASSWORD=password -d postgres
-docker run -d --link a-postgres:postgres -p 80:80 --name my-moodle bencroskery/moodle:php54
+docker run -d --link a-postgres:postgres -p 8080:80 -v \local\folder:\var\www\html --name my-moodle bencroskery/moodle:php54
 
 # Moodle config
 # -------------
@@ -47,9 +55,10 @@ docker run -d --link a-postgres:postgres -p 80:80 --name my-moodle bencroskery/m
 #   user: postgres
 #   password: password
 ```
+###PHP5.4 + Oracle
 ```
 docker run -d --name a-oracle --shm-size=1g bencroskery/moodle:oracle
-docker run -d --link a-oracle:oracle -p 80:80 --name my-moodle bencroskery/moodle:php54o
+docker run -d --link a-oracle:oracle -p 8080:80 --name my-moodle bencroskery/moodle:php54o
 # Wait a few minutes for oracle to start up
 docker exec a-oracle ./setMoodle.sh
 
