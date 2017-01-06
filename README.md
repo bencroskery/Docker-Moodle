@@ -72,6 +72,10 @@ docker exec a-oracle ./setMoodle.sh
 #   password: password
 #   port: 1521
 ```
+## Extras
+SSH into any of the machines using `docker exec -it <container> /bin/bash`
+
+Change the Oracle DB password using `docker exec a-oracle ./setPassword.sh password`
 
 ## More Docs
 
