@@ -6,16 +6,16 @@ Dockerfiles to ease installation of various Moodle configurations.
 
 Build any of the available containers from the root folder with the following commands:
 
-###PHP5.4 + Moodle
+### PHP5.4 + Moodle
 `docker build -t bencroskery/moodle:php54 php54`
 
-###PHP7 + Moodle
+### PHP7 + Moodle
 `docker build -t bencroskery/moodle:php7 php7`
 
-###PHP5.4 + Oracle Client + Moodle
+### PHP5.4 + Oracle Client + Moodle
 `docker build -t bencroskery/moodle:php54o php54o`
 
-###Oracle + Moodle
+### Oracle + Moodle
 `docker build -t bencroskery/moodle:oracle oracle`
 
 ## Running
@@ -32,7 +32,7 @@ For Oracle use the provided Oracle container with the PHP5.4 + Oracle Client.
 
 Examples below:
 
-###PHP7 + MySQL with Moodle Install
+### PHP7 + MySQL with Moodle Install
 ```
 docker run -d --name a-mysql -e MYSQL_ROOT_PASSWORD=password -d mysql
 docker run -d --link a-mysql:mysql -p 8080:80 -e INSTALL=true --name my-moodle bencroskery/moodle:php7
@@ -45,7 +45,7 @@ docker run -d --link a-mysql:mysql -p 8080:80 -e INSTALL=true --name my-moodle b
 #   password: password
 ```
 
-###PHP5.4 + PostgreSQL with Volume Mount
+### PHP5.4 + PostgreSQL with Volume Mount
 ```
 docker run -d --name a-postgres -e POSTGRESS_PASSWORD=password -d postgres
 docker run -d --link a-postgres:postgres -p 8080:80 -v \local\folder:\var\www\html --name my-moodle bencroskery/moodle:php54
@@ -57,7 +57,7 @@ docker run -d --link a-postgres:postgres -p 8080:80 -v \local\folder:\var\www\ht
 #   user: postgres
 #   password: password
 ```
-###PHP5.4 + Oracle
+### PHP5.4 + Oracle
 ```
 docker run -d --name a-oracle --shm-size=1g bencroskery/moodle:oracle
 docker run -d --link a-oracle:oracle -p 8080:80 --name my-moodle bencroskery/moodle:php54o
